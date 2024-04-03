@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">
+</head>
+<body>
+    <div class="container">
+        <div class="row mt-5">
+            <div class="col-12 text-center">
+                <h1>Calculator</h1><hr>
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col-4">
+                <label for="number1">Enter Number1: </label><br>
+                <input type="text" name="number1" id="number1" class="form-control" required>
+            </div>
+            <div class="col-4">
+                <label for="operator">Select Operator:</label><br>
+                <select name="operator" id="operator" class="form-select">
+                    <option value="+">Addition ( + )</option>
+                    <option value="-">Subtraction ( - )</option>
+                    <option value="*">Multiplication ( * )</option>
+                    <option value="/">Division ( / )</option>
+                </select>
+            </div>
+            <div class="col-4">
+                <label for="number2">Enter Number2:</label><br>
+                <input type="text" name="number2" id="number2" class="form-control" required>
+            </div>
+        </div>
+
+        <div class="row mt-2">
+            <div class="col-12 text-center">
+                <button type="button" class="btn btn-success" onclick="myFunction()">Calculate</button>
+            </div>
+        </div>
+
+        <div class="row mt-3">
+            <div id="result">
+        
+            </div>
+        </div>
+
+    </div>
+    <script>
+        function myFunction()
+        {
+            let number1 = parseFloat(document.getElementById("number1").value);
+            let number2 = parseFloat(document.getElementById("number2").value);
+            let operator = document.getElementById("operator").value;
+
+            if(isNaN(number1) || isNaN(number2))
+            {
+                document.getElementById("result").innerHTML = 'Please Enter only Number';
+                document.getElementById("result").classList.remove("text-center", "alert", "alert-success");
+                document.getElementById("result").classList.add("text-center", "alert", "alert-danger");
+                return false;
+            }
+            else
+            {
+                document.getElementById("result").innerHTML = 'Result: '+ eval(number1 + operator + number2);
+                document.getElementById("result").classList.remove("text-center", "alert", "alert-danger");
+                document.getElementById("result").classList.add("text-center", "alert", "alert-success");
+            }
+        }
+    </script>
+    <script src="assets/js/bootstrap.bundle.js"></script>
+</body>
+</html>
